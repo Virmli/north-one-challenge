@@ -25,4 +25,4 @@ docker-compose up
 ## APIS
 
 This service exposes two apis local npm run exposes ``port:4040``, and docker run exposes ``port:8080``
-For the full list of api please use Postman and NorthOne-todo-list postman collection (see [postman-collection](url.))
+For the full list of api please use Postman and NorthOne-todo-list postman collection (see [postman-collection](https://github.com/Virmli/north-one-challenge/blob/main/postman/NorthOneChallenge.postman_collection.json))
