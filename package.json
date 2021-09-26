@@ -1,0 +1,38 @@
+{
+  "name": "north-one-challenge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NorthOne To-do list challenge.",
+  "author": "Maksym Syvozhelizov",
+  "engines": {
+    "node": ">=12"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-promise-router": "^4.1.0",
+    "express-winston": "^4.0.5",
+    "fast-safe-stringify": "^2.1.1",
+    "mongoose": "6.0.7"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "2.22",
+    "eslint-plugin-jest": "^24.1.5",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "dev": "npm run development",
+    "development": "APP_ENV=development NODE_ENV=development nodemon -w src src/index.js",
+    "start": "APP_ENV=production NODE_ENV=production node src/index.js",
+    "test": "jest",
+    "lint": "eslint 'src' --config .eslintrc",
+    "lint:fix": "npm run lint -- --fix",
+    "mongo:start": "docker-compose up -d mongo",
+    "mongo:stop": "docker-compose down"
+  }
+}

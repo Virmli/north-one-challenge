@@ -1,0 +1,19 @@
+# Defines the local environment configuration for our application
+version: '2'
+services:
+  mongo:
+    container_name: north-one-mongo
+    image: mongo
+    ports:
+      - '27017:27017'
+  northone:
+    container_name: north-one
+    build: .
+    environment:
+      - APP_ENV=production
+      - NODE_ENV=production
+      - PORT=8080
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mongo
