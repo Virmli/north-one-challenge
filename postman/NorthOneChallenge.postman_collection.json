@@ -69,7 +69,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userId\": \"614e784c317dd84c8e792122\",\n    \"title\": \"Task 1\",\n    \"description\": \"Amazing task I need to do\",\n    \"dueDate\": \"2021-12-22\"\n}",
+					"raw": "{\n    \"userId\": \"614e784c317dd84c8e792122\",\n    \"title\": \"\",\n    \"description\": \"Amazing task I need to do\",\n    \"subTask\": [{\n        \"title\": \"sub task title\",\n        \"description\": \"sub task desc\",\n        \"dueDate\": \"2021-12-24\"\n    }],\n    \"dueDate\": \"2021-12-22\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -143,7 +143,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"Updated from postman\"\n}",
+					"raw": "{\n    \"title\": \"Updated from postman\",\n    \"subTask\": [\n        {\n            \"title\": \"sub task title\",\n            \"description\": \"sub task desc\",\n            \"status\": \"Pending\",\n            \"dueDate\": \"2021-12-24T00:00:00.000Z\"\n        },\n        {\n        \"title\": \"sub task title\",\n        \"description\": \"sub task desc\",\n        \"dueDate\": \"2021-12-25\"\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -151,7 +151,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4040/api/v1/task?taskId=614e827d59e0c4134522810b",
+					"raw": "http://localhost:4040/api/v1/task?taskId=6150d918490ff899ff0fdeff",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -165,7 +165,7 @@
 					"query": [
 						{
 							"key": "taskId",
-							"value": "614e827d59e0c4134522810b"
+							"value": "6150d918490ff899ff0fdeff"
 						}
 					]
 				}
