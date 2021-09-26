@@ -13,7 +13,7 @@ class HelperFunctions {
   static generateSearchQuery(apiQuery) {
     const searchQuery = {};
     for (const key in apiQuery) {
-      if (key !== 'page' || key !== 'limit') {
+      if (key !== 'page' && key !== 'limit') {
         searchQuery[key] = searchQuery[key] !== '' ? apiQuery[key] : null;
       }
     }

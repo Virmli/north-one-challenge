@@ -18,8 +18,7 @@ const TaskClient = {
    * @param limit
    * @returns {Promise<*>}
    */
-  async getAllTasks(userId, page, limit) {
-    const query = { userId };
+  async getAllTasks(query, page, limit) {
     const taskList = await TaskModel.find(query)
       .skip(page * limit)
       .limit(limit);
