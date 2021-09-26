@@ -1,4 +1,3 @@
-
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -8,13 +7,13 @@ const config = require('./config');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost/todo-list')
+    await mongoose.connect('mongodb://localhost/todo-list');
     console.log('Mongo DB connection success.');
-  } catch(err) {
+  } catch (err) {
     console.log(`Mongo DB connection error: ${err}`);
     process.exit(1);
   }
-}
+};
 // express
 const app = express();
 connectDB();

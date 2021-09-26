@@ -31,6 +31,12 @@ const TaskClient = {
     };
   },
 
+  /**
+   * Updates existing task.
+   * @param updateInfo
+   * @param taskId
+   * @returns {Promise<*>}
+   */
   async updateTask(updateInfo, taskId) {
     const query = { _id: taskId };
     const updatedTask = await TaskModel.findOneAndUpdate(query, updateInfo,
@@ -39,6 +45,11 @@ const TaskClient = {
     return updatedTask;
   },
 
+  /**
+   * Delete task by task id.
+   * @param taskId
+   * @returns {Promise<awaited Query<any, any, {}, any> | Query<any, any, {}, DocType>>}
+   */
   async deleteTask(taskId) {
     const deleted = await TaskModel.findByIdAndDelete(taskId);
 

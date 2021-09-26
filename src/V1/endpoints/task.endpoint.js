@@ -42,6 +42,13 @@ module.exports.listUserTasks = async (taskService, req, res) => {
   }
 };
 
+/**
+ * Entry point to update task
+ * @param taskService
+ * @param req
+ * @param res
+ * @returns {Promise<*>}
+ */
 module.exports.updateUserTask = async (taskService, req, res) => {
   try {
     const response = await taskService.updateUserTask(req);
@@ -55,6 +62,13 @@ module.exports.updateUserTask = async (taskService, req, res) => {
   }
 };
 
+/**
+ * Entry point to delete task by id.
+ * @param taskService
+ * @param req
+ * @param res
+ * @returns {Promise<*>}
+ */
 module.exports.deleteTask = async (taskService, req, res) => {
   try {
     const response = await taskService.deleteTask(req);

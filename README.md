@@ -22,7 +22,27 @@ docker-compose build
 docker-compose up
 ```
 
+## Test
+
+The unit test can be run two ways localy and from docker compose file
+
+```bash
+docker-compose run northone npm test
+```
+Unit testing without docker:
+
+```bash
+npm run test
+```
+
 ## APIS
 
 This service exposes two apis local npm run exposes ``port:4040``, and docker run exposes ``port:8080``
 For the full list of api please use Postman and NorthOne-todo-list postman collection (see [postman-collection](https://github.com/Virmli/north-one-challenge/blob/main/postman/NorthOneChallenge.postman_collection.json))
+
+##Repo Features
+* User can add, edit, and remove tasks.
+* Task Search functionality.
+* Create a user to manage user unique tasks.
+* Filter and/or sort tasks based on status
+* 
