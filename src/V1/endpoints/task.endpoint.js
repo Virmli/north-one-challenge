@@ -22,6 +22,7 @@ module.exports.createTask = async (taskService, req, res) => {
     });
   }
 };
+
 /**
  * Entry point to get list of user tasks.
  * @param taskService

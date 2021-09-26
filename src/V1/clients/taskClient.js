@@ -11,6 +11,11 @@ const TaskClient = {
     return task;
   },
 
+  async findTaskById(taskId) {
+    const task = await TaskModel.findById(taskId);
+    return task;
+  },
+
   /**
    * Get all user tasks with pagination support.
    * @param userId

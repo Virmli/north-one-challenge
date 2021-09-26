@@ -1,6 +1,5 @@
 const { TaskClient } = require('../clients/taskClient');
 const HelperFunctions = require('../utils/helperFunctions');
-
 /**
  * Creates a new task for user
  * @param req
@@ -11,8 +10,21 @@ module.exports.createNewTask = async (req) => {
 
   // TODO: check if user exist when creating a task.
   // TODO: add validation that date is in future
-  // TODO: add specific hours min sec.
+  // TODO: future improvements add specific hours min sec.
   console.log('Creating new task.');
+
+  if (Object.prototype.hasOwnProperty.call(newTask, 'subTask')) {
+    if (HelperFunctions.ifSubTaskObjectIncorrect(newTask)) {
+      return { message: 'Wrong subtask structure' };
+    }
+
+    // make sure sub task dueDate is less or equal to task dueDate
+    for (let i = 0; i < newTask.subTask.length; i++) {
+      if (HelperFunctions.checkSubTaskDueDate(newTask.subTask[i].dueDate, newTask.dueDate)) {
+        return { message: 'Sub task dueDate should be less or equal to task dueDate' };
+      }
+    }
+  }
   const task = await TaskClient.createNewTask(newTask);
 
   return task;
@@ -39,17 +51,31 @@ module.exports.listUserTasks = async (req) => {
   };
 };
 
-module.exports.getTaskReminder = async (req) => {
-  // TODO: add for Date.now to 24hours/48hours/7days etc.
-  // TODO: create task category model??
-  return {}
-};
-
 module.exports.updateUserTask = async (req) => {
   const updateInfo = req.body;
   const { taskId } = req.query;
 
   console.log('Update task');
+
+  // get task by id
+  const taskToUpdate = await TaskClient.findTaskById(taskId);
+
+  if (taskToUpdate === null) {
+    return { message: `Task with id: ${taskId} does not exist` };
+  }
+
+  if (Object.prototype.hasOwnProperty.call(updateInfo, 'subTask')) {
+    if (HelperFunctions.ifSubTaskObjectIncorrect(updateInfo)) {
+      return { message: 'Wrong subtask structure' };
+    }
+
+    // make sure sub task dueDate is less or equal to task dueDate
+    for (let i = 0; i < updateInfo.subTask.length; i++) {
+      if (HelperFunctions.checkSubTaskDueDate(updateInfo.subTask[i].dueDate, taskToUpdate.dueDate)) {
+        return { message: 'Sub task dueDate should be less or equal to task dueDate' };
+      }
+    }
+  }
   const response = await TaskClient.updateTask(updateInfo, taskId);
 
   return response;

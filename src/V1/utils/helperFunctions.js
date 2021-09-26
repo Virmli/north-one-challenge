@@ -1,13 +1,27 @@
 class HelperFunctions {
   /**
-   * Converts human format YYYY-MM-DD to ISO YYYY-MM-DDTHH:MM:SSZ
-   * @param humanDate
-   * @returns {string}
+   * Check that sub task date is less or equal to main task date.
+   * @param subDate
+   * @param taskDate
+   * @returns {boolean}
    */
-  static dateToISO8601(humanDate) {
-    const date = new Date(humanDate);
+  static checkSubTaskDueDate(subDate, taskDate) {
+    if (new Date(subDate) > new Date(taskDate)) {
+      return false;
+    }
+    return true;
+  }
 
-    return date.toISOString();
+  static ifSubTaskObjectIncorrect(newTask) {
+    let response = true;
+    if (Array.isArray(newTask.subTask)) {
+      newTask.subTask.forEach((item) => {
+        if (Object.prototype.hasOwnProperty.call(item, 'dueDate')) {
+          response = false;
+        }
+      });
+    }
+    return response;
   }
 
   static generateSearchQuery(apiQuery) {

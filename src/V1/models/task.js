@@ -3,6 +3,33 @@ const mongoose = require('mongoose');
 const PENDING_ENUM = 'Pending';
 const DONE_ENUM = 'Done';
 
+const subTaskDBSchema = new mongoose.Schema({
+  createdOn: {
+    type: Date,
+    default: Date.now,
+    immutable: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  status: {
+    type: String,
+    enum: [
+      PENDING_ENUM,
+      DONE_ENUM,
+    ],
+    default: PENDING_ENUM,
+  },
+  dueDate: {
+    type: Date,
+    required: true,
+  },
+});
 const taskDBSchema = new mongoose.Schema({
   createdOn: {
     type: Date,
@@ -33,6 +60,7 @@ const taskDBSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  subTask: [subTaskDBSchema],
   category: {
     type: String,
     default: '',
